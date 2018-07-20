@@ -356,8 +356,8 @@ module.exports = {
                 throw Error(result.output);
             }
             else {
-                var packagePath = result.stdout.match(/Package File Location\:\s*(.*)/);
-                if(packagePath && packagePath[1]) {
+                var packagePath = result.output.match(/Package File Location\:\s*(.*)/);
+                if (packagePath && packagePath[1]) {
                     prepareDir(dest);
                     shelljs.mv('-f', packagePath[1], path.resolve(dest));
                     shelljs.rm('-rf', path.resolve(path.join(www, TEMPORARY_BUILD_DIR)));
